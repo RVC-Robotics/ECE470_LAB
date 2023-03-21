@@ -127,29 +127,21 @@ def main():
 
 	# Definition of our tower
 
-	# 2D layers (top view)
+	# block contact position
+	# | Q[0][0] Q[0][1] Q[0][2] |   Contact point of top block
+	# | Q[1][0] Q[1][1] Q[1][2] |   Contact point of middle block
+	# | Q[2][0] Q[2][1] Q[2][2] |   Contact point of bottom block
+	# | Tower1  Tower2  Tower3  |
 
-	# Layer (Above blocks)
-	# | Q[0][2][1] Q[1][2][1] Q[2][2][1] |   Above third block
-	# | Q[0][1][1] Q[1][1][1] Q[2][1][1] |   Above point of second block
-	# | Q[0][0][1] Q[1][0][1] Q[2][0][1] |   Above point of bottom block
-
-	# Layer (Gripping blocks)
-	# | Q[0][2][0] Q[1][2][0] Q[2][2][0] |   Contact point of third block
-	# | Q[0][1][0] Q[1][1][0] Q[2][1][0] |   Contact point of second block
-	# | Q[0][0][0] Q[1][0][0] Q[2][0][0] |   Contact point of bottom block
-
-	# First index - From left to right position A, B, C
-	# Second index - From "bottom" to "top" position 1, 2, 3
-	# Third index - From gripper contact point to "in the air" point
+	# First index - From "top" to "bottom"
+	# Second index - From "left" to "right"
 
 	# How the arm will move (Suggestions)
-	# 1. Go to the "above (start) block" position from its base position
+	# 1. Go to the "home" position
 	# 2. Drop to the "contact (start) block" position
-	# 3. Rise back to the "above (start) block" position
-	# 4. Move to the destination "above (end) block" position
-	# 5. Drop to the corresponding "contact (end) block" position
-	# 6. Rise back to the "above (end) block" position
+	# 3. Rise back to the "home" position
+	# 4. Drop to the corresponding "contact (end) block" position
+	# 5. Rise back to the "home" position
 
 	# Initialize ROS node
 	rospy.init_node('lab3_node')
